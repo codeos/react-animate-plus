@@ -1,0 +1,506 @@
+/* ------------------------------------------- */
+/* Mixins
+/* ------------------------------------------- */
+
+@mixin transitionDuration ($duration) {
+	transition-duration: $duration;
+	-webkit-transition-duration: $duration;
+}
+
+@mixin easingTimingFunction () {
+	-webkit-transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	-moz-transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	-ms-transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	 -o-transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	    transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940); /* easeOutQuad */
+
+	-webkit-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	-moz-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	-ms-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	 -o-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	    transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940); /* easeOutQuad */
+}
+
+@mixin bouncyTimingFunction () {
+	-webkit-transition: all 0 cubic-bezier(0.175, 0.885, 0.320, 1); /* older webkit */
+	-webkit-transition: all 0 cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+	   -moz-transition: all 0 cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+	    -ms-transition: all 0 cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+	     -o-transition: all 0 cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+	        transition: all 0 cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.450, 1); /* older webkit */
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.450, 1.595); 
+	   -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.450, 1.595); 
+	    -ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.450, 1.595); 
+	     -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.450, 1.595); 
+	        transition-timing-function: cubic-bezier(0.175, 0.885, 0.450, 1.595); /* custom */
+}
+
+@mixin easingOutQuadTimingFunction () {
+	-webkit-transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	   -moz-transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	    -ms-transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	     -o-transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	        transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940); /* easeOutQuad */
+
+	-webkit-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	   -moz-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	    -ms-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	     -o-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	        transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940); /* easeOutQuad */
+}
+
+@mixin transform ($value) {
+	transform: $value;
+	-ms-transform: $value;
+	-webkit-transform: $value;
+}
+
+/* ------------------------------------------- */
+/* Toggle Fade  
+/* ------------------------------------------- */
+
+.toggle-enter {
+	@include easingTimingFunction();
+	opacity: 0;
+	@include transitionDuration(250ms);
+
+	&.toggle-enter-active {
+		opacity: 1;	
+	}
+}
+
+.toggle-leave {
+	opacity: 1;
+	@include transitionDuration(250ms);
+
+	&.toggle-leave-active {
+		opacity: 0;	
+	}
+}
+
+/* ------------------------------------------- */
+/* Slide Top 
+/* ------------------------------------------- */
+
+.slide-top-enter {
+	@include easingTimingFunction();
+	@include transform(translateY(60px)); 
+	@include transitionDuration(250ms);
+	opacity: 0;
+	&.slide-top-enter-active {
+		@include transform(translateY(0));
+		opacity: 1;	
+	}
+
+
+	&.ng-leave-active {
+		@include transform(translateY(60px)); 
+		opacity: 0;	
+	}
+}
+
+.slide-top-leave {
+	@include transform(translateY(0));
+	@include transitionDuration(250ms);
+	opacity: 1;
+
+	&.slide-top-leave-active {
+		@include transform(translateY(60px)); 
+		opacity: 0;	
+	}
+}
+
+
+
+/* ------------------------------------------- */
+/* Slide Rigth 
+/* ------------------------------------------- */
+
+.slide-right-enter {
+	@include easingTimingFunction();
+	@include transform(translateX(60px)); 
+	@include transitionDuration(250ms);
+	opacity: 0;
+
+	&.slide-right-enter-active {
+		@include transform(translateX(0));
+		opacity: 1;	
+	}
+}
+
+.slide-right-leave {
+	@include transform(translateX(0));
+	@include transitionDuration(250ms);
+	opacity: 1;
+
+	&.slide-right-leave-active {
+		@include transform(translateX(60px)); 
+		opacity: 0;	
+	}
+}
+
+
+
+/* ------------------------------------------- */
+/* Slide Left 
+/* ------------------------------------------- */
+
+.slide-left-enter {
+	@include easingTimingFunction();
+	@include transform(translateX(-60px));
+	@include transitionDuration(250ms);
+	opacity: 0;
+
+	&.slide-left-enter-active {
+		@include transform(translateX(0));
+		opacity: 1;	
+	}
+
+}
+
+.slide-left-leave {
+	@include transform(translateX(0));
+	@include transitionDuration(250ms);
+	opacity: 1;
+
+	&.slide-left-leave-active {
+		@include transform(translateX(-60px));
+		opacity: 0;	
+	}
+}
+
+
+/* ------------------------------------------- */
+/* Slide Down
+/* ------------------------------------------- */
+
+.slide-down-enter {
+	@include easingTimingFunction();
+	@include transform(translateY(-60px)); 
+	@include transitionDuration(250ms);
+	opacity: 0;
+
+	&.slide-down-enter-active {
+		@include transform(translateY(0));
+		opacity: 1;	
+	}
+}
+
+.slide-down-leave {
+	@include transform(translateY(0));
+	@include transitionDuration(250ms);
+	opacity: 1;
+
+	&.slide-down-leave-active {
+		@include transform(translateY(-60px)); 
+		opacity: 0;	
+	}
+}
+
+/* ------------------------------------------- */
+/* Bouncy Slide Top 
+/* ------------------------------------------- */
+
+.bouncy-slide-top-enter {
+	@include bouncyTimingFunction();
+	@include transform(translateY(240px));
+	@include transitionDuration(250ms);
+	opacity: 0;
+
+	&.bouncy-slide-top-enter-active {
+		@include transform(translateY(0));
+		opacity: 1;	
+	}
+}
+
+.bouncy-slide-top-leave {
+	@include transform(translateY(0));
+	@include transitionDuration(250ms);
+	opacity: 1;
+
+	&.bouncy-slide-top-leave-active {
+		@include transform(translateY(240px)); 
+		opacity: 0;	
+	}
+}
+
+
+/* ------------------------------------------- */
+/* Bouncy Slide Rigth 
+/* ------------------------------------------- */
+
+.bouncy-slide-right-enter {
+	@include bouncyTimingFunction();
+	@include transform(translateX(240px)); 
+	@include transitionDuration(250ms);
+	opacity: 0;
+
+	&.bouncy-slide-right-enter-active {
+		@include transform(translateX(0));
+		opacity: 1;	
+	}
+}
+
+.bouncy-slide-right-leave {
+	@include transform(translateX(0));
+	@include transitionDuration(250ms);
+	opacity: 1;
+
+	&.bouncy-slide-right-leave-active {
+		@include transform(translateX(240px));
+		opacity: 0;	
+	}
+}
+
+	
+
+
+
+
+/* ------------------------------------------- */
+/* Bouncy Slide Left 
+/* ------------------------------------------- */
+
+.bouncy-slide-left-enter {
+	@include bouncyTimingFunction();
+	@include transform(translateX(-240px));
+	@include transitionDuration(250ms);
+	opacity: 0;
+
+	&.bouncy-slide-left-enter-active {
+		@include transform(translateX(0));
+		opacity: 1;	
+	}
+}
+
+.bouncy-slide-left-leave {
+	@include transform(translateX(0));
+	@include transitionDuration(250ms);
+	opacity: 1;
+
+	&.bouncy-slide-left-leave-active {
+		@include transform(translateX(-240px));
+		opacity: 0;	
+	}
+}
+
+
+
+
+/* ------------------------------------------- */
+/* Bouncy Slide Down
+/* ------------------------------------------- */
+
+.bouncy-slide-down-enter {
+	@include bouncyTimingFunction();
+	@include transform(translateY(-240px));
+	@include transitionDuration(250ms);
+	opacity: 0;
+
+	&.bouncy-slide-down-enter-active {
+		@include transform(translateY(0));
+		opacity: 1;	
+	}
+}
+
+.bouncy-slide-down-leave {
+	@include transform(translateY(0));
+	@include transitionDuration(250ms);
+	opacity: 1;
+
+	&.bouncy-slide-down-leave-active {
+		@include transform(translateY(-240px));
+		opacity: 0;	
+	}
+}
+
+
+
+
+
+
+/* ------------------------------------------- */
+/* Scale Fade 
+/* ------------------------------------------- */
+
+.scale-fade-enter {
+	@include easingTimingFunction();
+	@include transform(scale(0.7));
+	@include transitionDuration(250ms);
+	opacity: 0;
+
+	&.scale-fade-enter-active {
+		@include transform(scale(1));
+		opacity: 1;	
+	}
+}
+
+.scale-fade-leave {
+	@include transform(scale(1));
+	@include transitionDuration(250ms);
+	opacity: 1;
+
+	&.scale-fade-leave-active {
+		@include transform(scale(0.7)); 
+		opacity: 0;	
+	}
+}
+
+
+
+
+/* ------------------------------------------- */
+/* Spin Fade 
+/* ------------------------------------------- */
+
+.spin-toggle-enter {
+	@include easingTimingFunction();
+	@include transform(rotate(225deg));
+	@include transitionDuration(250ms);
+	opacity: 0;
+
+
+	&.spin-toggle-enter-active {
+		@include transform(rotate(0deg));
+		opacity: 1;	
+	}
+}
+
+.spin-toggle-leave {
+	@include transform(rotate(0deg));
+	@include transitionDuration(250ms);
+	opacity: 1;
+
+	&.spin-toggle-leave-active {
+		@include transform(rotate(90deg)); 
+		opacity: 0;	
+	}
+}
+
+
+
+/* ------------------------------------------- */
+/* Scale in Fade 
+/* ------------------------------------------- */
+
+.scale-fade-in-enter {
+	@include easingOutQuadTimingFunction();
+	@include transform(scale(3));
+	@include transitionDuration(250ms);
+	opacity: 0;
+
+	&.scale-fade-in-enter-active {
+		@include transform(scale(1));
+		opacity: 1;	
+	}
+
+}
+
+.scale-fade-in-leave {
+	@include transform(scale(1));
+	@include transitionDuration(250ms);
+	opacity: 1;
+
+	&.scale-fade-in-leave-active {
+		@include transform(scale(3));
+		opacity: 0;	
+	}
+}
+
+	
+
+
+
+
+/* ------------------------------------------- */
+/* Bouncy Scale in Fade 
+/* ------------------------------------------- */
+
+.bouncy-scale-in-enter {
+	@include bouncyTimingFunction();
+	@include transform(scale(3));
+	@include transitionDuration(450ms);
+	opacity: 0;
+
+	&.bouncy-scale-in-enter-active {
+		@include transform(scale(1));
+		opacity: 1;	
+	}
+
+}
+
+.bouncy-scale-in-leave {
+	@include transform(scale(1));
+	@include transitionDuration(450ms);
+	opacity: 1;
+
+	&.bouncy-scale-in-leave-active {
+		@include transform(scale(3));
+		opacity: 0;	
+	}
+}
+
+
+
+/* ------------------------------------------- */
+/* Flip In 
+/* ------------------------------------------- */
+
+.flip-in-enter {
+	@include easingTimingFunction();
+	@include transform(perspective(300px) rotateX(90deg));
+	@include transitionDuration(550ms);
+	opacity: 0.7;
+
+	&.flip-in-enter-active {
+		@include transform(perspective(300px) rotateX(0deg));
+		opacity: 1;	
+	}
+
+}
+
+.flip-in-leave {
+	@include transform(perspective(300px) rotateX(0deg));
+	@include transitionDuration(550ms);
+	opacity: 1;
+
+	&.flip-in-leave-active {
+		@include transform(perspective(300px) rotateX(135deg)); 
+		opacity: 0.7;	
+	}
+}
+
+	
+
+
+
+/* ------------------------------------------- */
+/* Rotate In 
+/* ------------------------------------------- */
+
+.rotate-in-enter {
+	@include bouncyTimingFunction();
+	@include transform(perspective(300px) rotateY(40deg));
+	@include transitionDuration(550ms);
+	opacity: 0.7;
+
+	&.rotate-in-enter-active {
+		@include transform(perspective(300px) rotateY(0deg));
+		opacity: 1;	
+	}
+}
+
+.rotate-in-leave {
+	@include transform(perspective(300px) rotateY(0deg));
+	@include transitionDuration(550ms);
+	opacity: 1;
+
+	&.rotate-in-leave-active {
+		@include transform(perspective(300px) rotateY(-40deg)); 
+		opacity: 0.7;	
+	}
+}
+
+	

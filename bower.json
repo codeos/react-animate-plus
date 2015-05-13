@@ -1,0 +1,8 @@
+{
+  "name": "react-animate-plus",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "react": "~0.13.3"
+  }
+}
