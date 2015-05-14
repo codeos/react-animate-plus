@@ -1,5 +1,3 @@
-// bower:scss
-// endbower
 
 body {
   background: #fafafa;
@@ -19,4 +17,3 @@ body {
   padding : 20px;
 }
 
-@import 'animate';

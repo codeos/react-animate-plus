@@ -1,5 +1,18 @@
 {
   "name": "react-animate-plus",
+  "main" : [ "dist/styles/animate.scss" ],
+  "description" : "React ReactCSSTransitionGroup css an implementation specification based ng-animate Animation Library",
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/codeos/react-animate-plus"
+  },
+  "version" : "1.0.0",
+  "author" : "Jeffery zhao",
+  "keywords" : [
+    "react",
+    "animate",
+    "react-animate"
+  ],
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
     "grunt": "^0.4.5",
